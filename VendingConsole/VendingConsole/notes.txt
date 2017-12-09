@@ -1,0 +1,55 @@
+﻿
+coins have weight
+
+machine accepts coins, recognizes by weight, rejects pennies
+
+adjusts "inserted" money
+
+accepts choice (if exact amt. / gives change only if change available)
+
+dispenses (resets "inserted" value)
+loads money into till
+
+has inventory, can be sold out
+
+=============================
+
+Display:
+
+Available:
+
+(3) cola $1.00  PRESS 1
+(3) chips $0.50  PRESS 2
+(3) candy $0.65  PRESS 3
+
+INSERT COIN / AMT. INSERTED
+(EXACT CHANGE ONLY)
+
+Press 'n' for insert Nickel
+Press 'd' for insert Dime
+Press 'q' for insert Quarter
+Press 'p' for insert Penny
+
+Press 'x' to Exit
+
+================================
+
+Main will call
+
+VendingMachine, to run mechanics and call
+
+BalanceSheet, to hold Product amounts, Cashbox amount, and Inserted amount
+
+=======================================
+
+Weights:
+
+Cent (since 1983) - 2.500 g
+.
+Nickel (since 1866) - 5.000 g
+.
+Dime (since 1965) - 2.268 g
+.
+Quarter (since 1965) - 5.670 g
+
+======================================
