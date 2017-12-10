@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingConsole;
 
@@ -11,10 +12,14 @@ namespace VendingTests
             const double Nickel = 5;
             const double Dime = 2.268;
             const double Quarter = 5.67;
+            BalanceSheet bal;
+            VendingMachine vend;
 
         [TestInitialize]
         public void TestInitialize()
         {
+            VendingMachine vend = new VendingMachine();
+            bal = new BalanceSheet();
         }
 
         //method should accept weight amount and return proper money amount
@@ -35,35 +40,44 @@ namespace VendingTests
         [TestMethod]
         public void CustomerPurchasesProduct()
         {
-           // Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Penny) == 0);
+            bal.Inserted = 1.05M;
+            bal.ColaInventory = 2;
+            int invLevel = bal.ColaInventory;
+            bal.SelectItem(1);
+            Assert.IsTrue(bal.ColaInventory == (invLevel- 1));
         }
 
         //application must return change to customer overpaying, when change is available
         [TestMethod]
         public void MachineReturnsChange()
         {
-            // Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Penny) == 0);
+            bal.Inserted = 1.05M;
+            bal.SelectItem(1);
+            Assert.IsTrue(bal.Change==.05M);
         }
 
         //application must return money inserted, if customer decides not to finalize sale
         [TestMethod]
         public void MachineReturnsInsertedMoney()
         {
-            // Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Penny) == 0);
+            bal.ClearInserted();
+            Assert.IsTrue(bal.CashBalance == 0); ;
         }
 
         //when product is sold out, the customer must be made aware
         [TestMethod]
         public void ProductSoldOutAlert()
         {
-            // Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Penny) == 0);
+            bal.ColaInventory = 0;
+            Assert.IsFalse(bal.ColaInvString.All(char.IsDigit));
         }
 
         //when machine cannot make change, display must reflect this state
         [TestMethod]
         public void CannotMakeChange()
         {
-            // Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Penny) == 0);
+            bal.CashBalance = .05M;
+            Assert.IsFalse(bal.CanMakeChange==true);
         }
 
 
