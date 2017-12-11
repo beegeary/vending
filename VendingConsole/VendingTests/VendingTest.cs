@@ -13,7 +13,6 @@ namespace VendingTests
             const double Dime = 2.268;
             const double Quarter = 5.67;
             BalanceSheet bal;
-            VendingMachine vend;
 
         [TestInitialize]
         public void TestInitialize()
@@ -27,6 +26,8 @@ namespace VendingTests
         public void MachineAcceptsAndConvertsCoins()
         {
             Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Nickel) == .05M);
+            Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Dime) == .1M);
+            Assert.IsTrue(VendingConsole.VendingMachine.ConvertCoin(Quarter) == .25M);
         }
 
         //and return zero if penny is inserted
@@ -40,7 +41,7 @@ namespace VendingTests
         [TestMethod]
         public void CustomerPurchasesProduct()
         {
-            bal.Inserted = 1.05M;
+            bal.Inserted = 1.00M;
             bal.ColaInventory = 2;
             int invLevel = bal.ColaInventory;
             bal.SelectItem(1);
@@ -61,7 +62,7 @@ namespace VendingTests
         public void MachineReturnsInsertedMoney()
         {
             bal.ClearInserted();
-            Assert.IsTrue(bal.CashBalance == 0); ;
+            Assert.IsTrue(bal.Inserted == 0); ;
         }
 
         //when product is sold out, the customer must be made aware
@@ -69,7 +70,8 @@ namespace VendingTests
         public void ProductSoldOutAlert()
         {
             bal.ColaInventory = 0;
-            Assert.IsFalse(bal.ColaInvString.All(char.IsDigit));
+            Assert.IsFalse(bal.ColaInvString.All(char.IsDigit)); 
+            //reflects that value is textual, such as "sold out" or "empty"
         }
 
         //when machine cannot make change, display must reflect this state
@@ -77,7 +79,7 @@ namespace VendingTests
         public void CannotMakeChange()
         {
             bal.CashBalance = .05M;
-            Assert.IsFalse(bal.CanMakeChange==true);
+            Assert.IsTrue(bal.CanMakeChange==false);
         }
 
 
