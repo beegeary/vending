@@ -1,5 +1,5 @@
 # vending
-Vending Machine Kata
+Vending Machine Kata (Console Application)
 
 Simple vending machine to accept payment for three products and dispense as payments are accepted. I built the application with a simple plan: create VendingMachine class to hold the display of text with some values dropped in on the fly, containing the current state of values (under the main "Run" method). This class also has a ConvertCoin method to turn coin weights into money amounts.
 
