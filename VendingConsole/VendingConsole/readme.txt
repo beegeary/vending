@@ -30,6 +30,6 @@ msbuild.exe <path>\vending-master\VendingConsole\vendingconsole.sln /p:Configura
 
 ...with the resulting application file at <path>\vending-master\VendingConsole\VendingTests\bin\Release\VendingConsole.exe
 
-Tests can be run in Visual Studio, Test Explorer, or if you prefer to run tests (vendingtests.dll) from command line, vstest.console.exe can be executed like this:
+Tests can be run in Visual Studio, Test Explorer, or if you prefer to run tests (vendingtests.dll) from command line, vstest.console.exe can be executed like this (Command Prompt should be Administrator or Developer type):
 
 vstest.console.exe "<path>\vending-master\VendingConsole\VendingTests\bin\Release\vendingtests.dll" /UseVsixExtensions:true
