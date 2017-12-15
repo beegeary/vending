@@ -16,3 +16,17 @@ Some areas that could be developed further than I have here:
 * no display is made of the total cash balance inside the machine, though it's a factor in whether or not exact change is required for payment
 
 * there is so far no concern for the user's own account: keeping track of initial ability to pay or adding change returned back to the account
+
+Building the Application:
+
+Application source files are at https://github.com/beegeary/vending. 
+
+Download project and unzip. Under your download folder, the solution file will be in \vending-master\VendingConsole\. Use your preferred build tool to download dependencies and build. With MSBuild for example, command will look like:
+
+msbuild.exe <path>\vending-master\VendingConsole\vendingconsole.sln /p:Configuration=Debug /p:Platform="Any CPU"
+
+...with the resulting application file at <path>\vending-master\VendingConsole\VendingTests\bin\Release\VendingConsole.exe
+
+Tests can be run in Visual Studio, Test Explorer, or if you prefer to run tests (vendingtests.dll) from command line, vstest.console.exe can be executed like this:
+
+vstest.console.exe "<path>\vending-master\VendingConsole\VendingTests\bin\Debug\vendingtests.dll" /UseVsixExtensions:true
